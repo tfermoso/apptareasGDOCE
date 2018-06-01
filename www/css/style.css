@@ -1,0 +1,90 @@
+form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+form input[type="submit"],input[type="reset"]{
+    width: 50%;
+    margin: 10px;
+    height: 30px;
+    font-size: 20px;
+    color: white;
+    background: blue;
+    padding: 5px;
+}
+input[type="reset"]{
+    background: gray;
+}
+
+#buttons{
+    display: flex;
+}
+
+#container{
+    width: 50%;
+    margin: 0 auto;
+}
+#containerLogin{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.ocultar{
+    display: none;
+}
+
+.mostrar{
+    display: block;
+}
+
+.dropdown{
+    list-style: none;
+    display: none;
+}
+.dropdownver{
+    list-style: none;
+    display: block;
+}
+#user{
+    cursor: pointer;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .addTarea{
+      background:rgb(255,0,0,0.5);
+      color:white;    
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      border:2px solid black;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 50px;
+      position: fixed;
+      bottom: 30px;
+      right: 40px;
+      cursor: pointer;
+  }

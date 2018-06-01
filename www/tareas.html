@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AppTareas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/tarea.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <span class="fas fa-user"></span>  
+        <span id="user">[usuario]</span>   
+        <ul id="userOptions" class="dropdown">
+            <li>
+                <a href="/cerrar">Cerrar</a>
+            </li>
+            <li>
+                <a id="datosUser" href="/editarUser">Datos de usuario</a>
+            </li>
+        </ul>
+
+    </header>
+    <hr>
+
+    <div id="container">
+        <h1>AppTareas</h1>
+        <div id="loader" class="loader ocultar"></div>
+
+        <div id="listarTareas" class="mostrar">
+            <h3>Lista de tareas</h3>
+            <table>
+                <thead>
+                    <th>Titulo</th>
+                    <th>Descripción</th>
+                    <th>Autor</th>
+                    <th>Ejecutor</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Operaciones</th>
+                </thead>
+                <tbody id="tblTareas">
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div id="datosUsuario" class="ocultar">
+            <h3>Datos de usuario</h3>
+            <form action="/datosuser" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" required name="nombre" id="nombre" placeholder="Nombre completo">
+                <label for="usuario">Usuario:</label>
+                <input type="text" required name="usuario" id="usuario" placeholder="Nombre de usuario">
+                <label for="email">Email:</label>
+                <input type="email" required name="email" id="email" placeholder="Email">
+                <label for="password">Password actual:</label>
+                <input type="password" required name="password" id="password" placeholder="Contraseña">
+                <label for="password">Nueva Password:</label>
+                <input type="password" required name="newpassword" id="newpassword" placeholder="Nueva contraseña">
+                <label for="password">Nueva Password:</label>
+                <input type="password" required name="renewpassword" id="renewpassword" placeholder="Vuelve a introducir la contraseña">
+                <input type="file" name="foto" id="foto" accept="image/*">
+                <div id="buttons">
+                    <input type="submit" id="btnGuardar" value="Guardar">
+                    <input type="reset" value="Cancel">
+                </div>
+            </form>
+
+            <output id="list"></output>
+        </div>
+
+        <div id="crearTarea" class="ocultar">
+            <h3>Nueva tarea</h3>
+
+            <form action="" method="post" id="formTarea">
+                <label for="titulo">Titulo:</label>
+                <input type="text" required name="titulo" id="titulo" placeholder="Título">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" required name="descripcion" id="descripcion" placeholder="Descripción">
+                <label for="fecha">Fecha:</label>
+                <input type="date" required name="fecha" id="fecha" value="" placeholder="Fecha">
+                <label for="ejecutor">Ejecutor:</label>
+                <select name="ejecutor" id="ejecutor">                    
+                    [ejecutores]
+                </select>
+                <div id="buttons">
+                    <input type="submit" id="btnTarea" value="Guardar">
+                    <input type="reset" value="Cancel">
+                </div>
+            </form>
+            
+        </div>
+
+        <div id="actualizarTarea" class="ocultar">
+            <h3>Actualizar tarea</h3>
+
+            <form action="" method="post" id="formActualizarTarea">
+                <input type="hidden" id="idtarea">
+                <label for="titulo">Titulo:</label>
+                <input type="text" required name="titulo" id="act_titulo">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" required name="descripcion" id="act_descripcion">
+                <label for="fecha">Fecha:</label>
+                <input type="date" required name="fecha" id="act_fecha" >
+                <label for="ejecutor">Ejecutor:</label>
+                <select name="ejecutor" id="act_ejecutor">                    
+                    [ejecutores]
+                </select>
+                <div id="buttons">
+                    <input type="submit" id="btnActTarea" value="Actualizar">
+                    <input type="reset" value="Cancel">
+                </div>
+            </form>
+        </div>
+    </div>
+
+<div id="addTarea" class="addTarea">+</div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/js.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>AppTareas</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Registro de usuario</h1>
+        <form action="" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" required name="nombre" id="nombre" placeholder="Nombre completo">
+            <label for="usuario">Usuario:</label>
+            <input type="text" required name="usuario" id="usuario" placeholder="Nombre de usuario">
+            <label for="email">Email:</label>
+            <input type="email" required name="email" id="email" placeholder="Email">
+            <label for="password">Password:</label>
+            <input type="password" required name="password" id="password" placeholder="Contraseña">
+            <label for="password">Password:</label>
+            <input type="password" required name="repassword" id="repassword" placeholder="Vuelve a introducir la contraseña">
+            <div id="buttons">
+                <input type="submit" id="btnGuardar" value="Guardar" disabled >
+                <input type="reset" value="Cancel">
+            </div>
+
+        </form>
+        <div id="mensajes" style="display: none"></div>
+    </div>
+</body>
+
+</html>
