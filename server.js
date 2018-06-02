@@ -116,12 +116,15 @@ app.get('/tarea', function (req, res) {
 
             options += `<option value='${usuario.id}' >${usuario.nombre}</option>`;
 
-
+            //Comprobar si es usuario logeado
+            if(usuario.id==req.session.idUser){
+              texto=texto.replace('<img src="" id="imgavatar"',`<img src="${usuario.avatar}" id="imgavatar"`);
+            }
 
           }
         }
         texto = texto.split("[ejecutores]").join(options);
-
+        console.log(texto);
         res.send(texto);
       })
 
@@ -166,22 +169,33 @@ app.get("/datosuser", function (req, res) {
 })
 
 app.post("/datosuser", function (req, res) {
-
+  // console.log(req.body);
+  // var datos={
+  //   usuario:req.body.usuario,
+  //   avatar:req.body.avatar
+  // }
+  // datos.usuario="cambio"+req.body.usuario;
+  // res.send(JSON.stringify(datos));
+  
   if (req.body.password == "") {
     res.send("noOk");
   } else {
-    connection.query("UPDATE usuario SET nombre = ?, email = ?, password=? WHERE id = ?",
-      [req.body.nombre, req.body.email, req.body.password, req.session.idUser],
+    connection.query("UPDATE usuario SET nombre = ?, email = ?, password=?,avatar=? WHERE id = ?",
+      [req.body.nombre, req.body.email, req.body.password,req.body.avatar, req.session.idUser],
       function (err, result) {
         if (result.affectedRows > 0) {
-
-          res.send("ok");
+          var datos={
+              usuario:req.body.usuario,
+              avatar:req.body.avatar
+            }
+          res.send(JSON.stringify(datos));
         } else {
           res.send("noOk");
         }
 
       });
   }
+  
 })
 
 app.post("/nuevatarea", function (req, res) {

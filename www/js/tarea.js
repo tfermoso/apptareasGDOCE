@@ -55,11 +55,13 @@ window.onload = function () {
         req.open("POST", "/datosuser", true);
         req.setRequestHeader("Content-Type", "application/json");
         req.addEventListener("load", function () {
-            if (req.response == "ok") {
-                alert("datos actualizados correctamente");
-            } else {
-                alert("error al actualizar los datos");
-            }
+            var datos=JSON.parse(req.response);
+            document.getElementById("imgavatar").src=datos.avatar;
+            // if (req.response == "ok") {
+            //     alert("datos actualizados correctamente");
+            // } else {
+            //     alert("error al actualizar los datos");
+            // }
 
         });
         req.addEventListener("error", function () {
@@ -70,8 +72,10 @@ window.onload = function () {
             nombre: document.getElementById("nombre").value,
             usuario: document.getElementById("usuario").value,
             email: document.getElementById("email").value,
-            password: document.getElementById("password").value
+            password: document.getElementById("password").value,
+            avatar: document.getElementById("avatar").src
         }
+        console.log(datos);
         req.send(JSON.stringify(datos));
     }
 
@@ -251,45 +255,55 @@ function cambioEstado(id) {
 
 function archivo(evt) {
     var files = evt.target.files; // FileList object
+    var file=files[0];
+    var reader= new FileReader();
+    reader.addEventListener("load",function(){
+        console.log("fichero leido");
+        console.log(reader.result);
+        document.getElementById("avatar").src=reader.result;
+        // document.getElementById("list").innerHTML = ['<img class="thumb" src="', reader.result,'" title="', escape(file.name), '"/>'].join('');
+    })
+    reader.readAsDataURL(file);
+
     // Obtenemos la imagen del campo "file".
-    for (var i = 0, f; f = files[i]; i++) {
-        //Solo admitimos imágenes.
-        if (!f.type.match('image.*')) {
-            continue;
-        }
-        var reader = new FileReader();
+    // for (var i = 0, f; f = files[i]; i++) {
+    //     //Solo admitimos imágenes.
+    //     if (!f.type.match('image.*')) {
+    //         continue;
+    //     }
+    //     var reader = new FileReader();
 
-        reader.readAsDataURL(files[0]);
+    //     reader.readAsDataURL(files[0]);
 
-        //   reader.onload=(function(theFile) {
-        //           return function(e) {
-        //               console.log(e.target.result)
+    //     //   reader.onload=(function(theFile) {
+    //     //           return function(e) {
+    //     //               console.log(e.target.result)
 
-        //             // Insertamos la imagen
-        //            document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
-        //           };
-        //       })(files[0])
-        reader.addEventListener("load", function () {
+    //     //             // Insertamos la imagen
+    //     //            document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+    //     //           };
+    //     //       })(files[0])
+    //     reader.addEventListener("load", function () {
             
-            return function (e) {
-                console.log(e.target.result)
+    //         return function (e) {
+    //             console.log(e.target.result)
 
-                // Insertamos la imagen
-                document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
-            };
-        });
-        //   var reader = new FileReader();
-        //   reader.onload = (function(theFile) {
-        //       return function(e) {
-        //           console.log(e.target.result)
+    //             // Insertamos la imagen
+    //             document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+    //         };
+    //     });
+    //     //   var reader = new FileReader();
+    //     //   reader.onload = (function(theFile) {
+    //     //       return function(e) {
+    //     //           console.log(e.target.result)
 
-        //         // Insertamos la imagen
-        //        document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
-        //       };
-        //   })(f);
+    //     //         // Insertamos la imagen
+    //     //        document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+    //     //       };
+    //     //   })(f);
 
-        //   reader.readAsDataURL(f);
-    }
+    //     //   reader.readAsDataURL(f);
+    // }
 }
 
 
