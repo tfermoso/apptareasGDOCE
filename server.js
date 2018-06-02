@@ -176,7 +176,18 @@ app.post("/datosuser", function (req, res) {
   // }
   // datos.usuario="cambio"+req.body.usuario;
   // res.send(JSON.stringify(datos));
-  
+
+  //Guardar la imagen como fichero en el servior
+  let image = req.body.avatar
+  var base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+  var name="avatar"+req.body.usuario+".jpg";
+  // grabas la imagen el disco
+  fs.writeFile(name, base64Data, 'base64', function(err) {
+      console.log(err);
+  });
+
+  console.log(image.title); // Imagen 264
+
   if (req.body.password == "") {
     res.send("noOk");
   } else {
